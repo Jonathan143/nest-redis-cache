@@ -17,9 +17,10 @@ const isCache = true;
 export function NestCacheApi({
   exSecond = redisCacheConfig.redisEXSecond,
   key = '',
+  formatKey = (key: string, request: Request) => key || request.url,
 }): any {
   return applyDecorators(
     SetMetadata(REDIS_CACHE_KEY, isCache),
-    SetMetadata(REDIS_CACHE_OPTIONs, { exSecond, key }),
+    SetMetadata(REDIS_CACHE_OPTIONs, { exSecond, key, formatKey }),
   );
 }
