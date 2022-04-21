@@ -1,6 +1,6 @@
 {
   "name": "nest-redis-cache",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "使用redis实现nestjs接口层面的缓存",
   "license": "MIT",
   "files": [
