@@ -4,6 +4,7 @@
 import { applyDecorators, SetMetadata } from '@nestjs/common';
 import { REDIS_CACHE_KEY, REDIS_CACHE_OPTIONs } from '../constants';
 import redisCacheConfig from '../config/redisCache.config';
+import { Request } from 'express';
 
 // 是否缓存
 const isCache = true;
