@@ -25,12 +25,12 @@ export class NestApiCacheInterceptor implements NestInterceptor {
     const isCacheApi =
       Reflect.getMetadata(REDIS_CACHE_KEY, context.getHandler()) ||
       Reflect.getMetadata(REDIS_CACHE_KEY, context.getClass());
-    const { exSecond, key, formatKey } =
-      Reflect.getMetadata(REDIS_CACHE_OPTIONs, context.getHandler()) ||
-      Reflect.getMetadata(REDIS_CACHE_OPTIONs, context.getClass());
+
     if (isCacheApi) {
-      // request.query
-      // request.body
+      const { exSecond, key, formatKey } =
+        Reflect.getMetadata(REDIS_CACHE_OPTIONs, context.getHandler()) ||
+        Reflect.getMetadata(REDIS_CACHE_OPTIONs, context.getClass()) ||
+        {};
       const redisKey = this.redisCacheKey(
         request.method,
         formatKey(key, request),
